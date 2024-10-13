@@ -6,6 +6,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: development
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -16,5 +17,14 @@ jobs:
          username: ${{ vars.DOCKER_USERNAME }}
          password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Construir image
+        run: |
+          docker build -t ${{ vars.DOCKER_USERNAME }}/mi-app-node:0.0.1 .
+          docker images
+
+      - name: Construir image
+        run: |
+          docker push ${{ vars.DOCKER_USERNAME }}/mi-app-node:0.0.1 
+         
     
     
