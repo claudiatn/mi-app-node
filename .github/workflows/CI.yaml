@@ -49,7 +49,7 @@ jobs:
 
       - name: Subir imagen
         run: |
-          docker push ${{ vars.DOCKER_USERNAME }}/${{needs.tag_image.output.tag_image}}
+          docker push ${{ vars.DOCKER_USERNAME }}/${{ needs.tag_image.outputs.tag_image }}
          
     
     
