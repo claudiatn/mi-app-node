@@ -25,7 +25,7 @@ jobs:
 
        - name: Imprimir tag
          run: |
-           echo tag_image: ${{steps.tag.outputs.tagged}}T
+           echo tag_image: ${{steps.tag.outputs.tagged}}
   
   build:
     needs: tag_image
