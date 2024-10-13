@@ -20,7 +20,7 @@ jobs:
          run: npm install
 
        - name: Arrancar app 
-         run: npm run start
+         run: nohup npm run start & #segundo plano
 
        - name: Verificar que esta corriendo
          run: |
