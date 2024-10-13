@@ -17,6 +17,14 @@ jobs:
          username: ${{ vars.DOCKER_USERNAME }}
          password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Tag de la imagen de Docker
+        id: tag
+        uses: ./.github/actions/tag
+
+      - name: Imprimir tag
+        run: |
+          echo tag=${{steps.tag.output.tagged}}
+          
       - name: Construir image
         run: |
           docker build -t ${{ vars.DOCKER_USERNAME }}/mi-app-node:0.0.2 .
