@@ -1,0 +1,36 @@
+name: Practica con app node
+on:
+  workflow_dispatch:
+    inputs:
+        environment:
+          description: "Selecciona el entorno"
+          required: true
+          type: choice
+          options:
+            - production
+            - staging
+
+        boolean:
+          description: "Confirma"
+          required: true
+          type: boolean
+
+        string:
+          description: "Introduce una palabra"
+          required: true
+          type: string
+
+jobs:
+  imprimir:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Imprimir inputs de dispatch
+        run: |
+          echo "Entorno elegido {{github.event.inputs.enviroment}}"
+          echo "Booleano: {{github.event.inputs.boolean}}"
+          echo "Palabra: {{github.event.inputs.string}}"
+      
+        
+      
+
+
