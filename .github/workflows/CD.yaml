@@ -9,11 +9,11 @@ jobs:
     steps:
       - name: Hacer pull de la imagen de Docker
         run: |
-          docker pull ${{ vars.DOCKER_USERNAME }}/mi-app-node:0.0.1
+          docker pull ${{ vars.DOCKER_USERNAME }}/mi-app-node:0.0.2
           
       - name: Desplegar
         run: |
-          docker run -d -p 3000:3000  ${{ vars.DOCKER_USERNAME }}/mi-app-node:0.0.1
+          docker run -d -p 3000:3000  ${{ vars.DOCKER_USERNAME }}/mi-app-node:0.0.2
 
       - name: Verificar si el contenedor está corriendo
         run: docker ps
