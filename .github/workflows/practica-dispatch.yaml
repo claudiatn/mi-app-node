@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: Imprimir inputs de dispatch
         run: |
-          echo "Entorno elegido ${{github.event.inputs.enviroment}}"
+          echo "Entorno elegido ${{github.event.inputs.environment}}"
           echo "Booleano: ${{github.event.inputs.boolean}}"
           echo "Palabra: ${{github.event.inputs.string}}"
       
