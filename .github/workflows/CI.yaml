@@ -23,13 +23,12 @@ jobs:
         uses: ./.github/actions/tag
 
       - name: Imprimir tag
-        id: tag_output
         run: |
-          echo tag=${{steps.tag.outputs.tagged}} >> GITHUB_OUTPUT
+          echo Tag: ${{steps.tag.outputs.tagged}}
           
       - name: Construir image
         run: |
-          docker build -t ${{ vars.DOCKER_USERNAME }}/${{steps.tag_output.outputs.tag}} .
+          docker build -t ${{ vars.DOCKER_USERNAME }}/${{steps.tag.outputs.tagged}} .
           docker images
 
       - name: Subir imagen
