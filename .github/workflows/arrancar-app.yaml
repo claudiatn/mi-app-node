@@ -6,7 +6,7 @@ on:
 
 jobs:
   arracar:
-    runs-on: ubunut-lastest
+    runs-on: ubunut-latest
     steps:
        - name: Checkout del repositorio
          uses: actions/checkout@v3
