@@ -1,0 +1,32 @@
+name: Arrancar app node.js
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  arracar:
+    runs-on: ubunut-lastest
+    steps:
+       - name: Checkout del repositorio
+         uses: actions/checkout@v3
+
+       - name:  Node.js
+         uses: actions/setup-node@v3
+         with:
+           node-version: '18'
+
+       - name: Instalar dependencias
+         run: npm install
+
+       - name: Arrancar app 
+         run: npm run start
+
+       - name: Verificar que esta corriendo
+         run: |
+           sleep 30
+           curl http://localhost:3000
+
+        
+
+        
