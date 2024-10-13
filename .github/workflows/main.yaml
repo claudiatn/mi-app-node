@@ -12,3 +12,5 @@ jobs:
     needs: ci
     uses: ./.github/workflows/CD.yaml
     secrets: inherit
+    with:
+      tag: "${{needs.ci.outputs.tag}}"
