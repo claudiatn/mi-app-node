@@ -3,6 +3,22 @@ on:
   workflow_dispatch:
 
 jobs:
+  entorno:
+    runs-on: ubuntu-latest
+    outputs: 
+      environment: ${{ steps.environment.outputs.environment }}
+      
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Action environment
+      id: environment
+      uses: ./.github/actions/environment
+  
+    - name: Entorno
+      run: |
+        echo environment="${{ steps.environment.outputs.environment }}"
   ci:
     name: CI
     uses: ./.github/workflows/CI.yaml
