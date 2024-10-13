@@ -13,7 +13,7 @@ jobs:
   tag_image:
      runs-on: ubuntu-latest
      outputs:
-      tag_image: ${{steps.tag.outputs.tagged}}
+      tag_image: ${{ steps.tag.outputs.tagged }}
 
      steps:
        - name: Checkout
@@ -25,7 +25,7 @@ jobs:
 
        - name: Imprimir tag
          run: |
-           echo tag_image: ${{steps.tag.outputs.tagged}}
+           echo tag_image: ${{ steps.tag.outputs.tagged }}
   
   build:
     needs: tag_image
@@ -41,7 +41,7 @@ jobs:
 
       - name: Construir image
         run: |
-          docker build -t ${{ vars.DOCKER_USERNAME }}/${{needs.tag_image.output.tag_image}} .
+          docker build -t ${{ vars.DOCKER_USERNAME }}/${{ needs.tag_image.outputs.tag_image}} .
           docker images
 
       - name: Subir imagen
