@@ -1,10 +1,7 @@
 name: CI
 
 on:
-  workflow_call:
-
-        
-  
+  workflow_call:  
     outputs:
       tag:
         value: "${{ jobs.tag_image.outputs.tag_image }}"
@@ -18,7 +15,7 @@ jobs:
       - name: test app
         uses: ./.github/actions/tests-app
         with:
-          environment: development
+          environment: production
     
   tag_image:
      needs: tests-app
