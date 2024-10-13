@@ -14,11 +14,11 @@ jobs:
     steps:
       - name: Hacer pull de la imagen de Docker
         run: |
-          docker pull ${{ vars.DOCKER_USERNAME }}/{{inputs.tag}}
+          docker pull ${{ vars.DOCKER_USERNAME }}/${{inputs.tag}}
           
       - name: Desplegar
         run: |
-          docker run -d -p 3000:3000  ${{ vars.DOCKER_USERNAME }}/{{inputs.tag}}
+          docker run -d -p 3000:3000  ${{ vars.DOCKER_USERNAME }}/${{inputs.tag}}
 
       - name: Verificar si el contenedor está corriendo
         run: docker ps
