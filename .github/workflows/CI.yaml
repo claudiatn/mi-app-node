@@ -28,7 +28,7 @@ jobs:
           
       - name: Construir image
         run: |
-          docker build -t ${{ vars.DOCKER_USERNAME }}/$tag.
+          docker build -t ${{ vars.DOCKER_USERNAME }}/${{tag}} .
           docker images
 
       - name: Subir imagen
