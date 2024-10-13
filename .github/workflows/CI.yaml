@@ -2,6 +2,11 @@ name: CI
 
 on:
   workflow_call:  
+    inputs:
+      environment: 
+        type: string
+        required: true
+        
     outputs:
       tag:
         value: "${{ jobs.tag_image.outputs.tag_image }}"
@@ -10,6 +15,7 @@ on:
 
 jobs:
   tests-app:
+    if: ${{ inputs.environment == 'production' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
