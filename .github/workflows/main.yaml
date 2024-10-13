@@ -20,13 +20,17 @@ jobs:
       run: |
         echo environment="${{ steps.environment.outputs.environment }}"
   ci:
+    needs: entorno
     name: CI
     uses: ./.github/workflows/CI.yaml
     secrets: inherit
+    with:   
+      environment: "${{needs.entorno.outputs.environment}}"
   cd:
     name: CD
-    needs: ci
+    needs: [ci,entorno]
     uses: ./.github/workflows/CD.yaml
     secrets: inherit
     with:
+      environment: "${{needs.entorno.outputs.environment}}"
       tag: "${{needs.ci.outputs.tag}}"
