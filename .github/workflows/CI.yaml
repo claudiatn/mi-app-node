@@ -2,6 +2,8 @@ name: CI
 
 on:
   workflow_call:
+
+        
   
     outputs:
       tag:
@@ -10,7 +12,16 @@ on:
 
 
 jobs:
+  tests-app:
+    runs-on: ubuntu-lastest
+    steps:
+      - name: test app
+        uses: ./.github/actions/tests-app
+        with:
+          environment: development
+    
   tag_image:
+     needs: tests-app
      runs-on: ubuntu-latest
      outputs:
       tag_image: ${{ steps.tag.outputs.tagged }}
