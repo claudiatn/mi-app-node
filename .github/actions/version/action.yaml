@@ -5,7 +5,7 @@ outputs:
     description: "Versión de la app"
     value: "${{steps.version.outputs.version}}"
     
-version:
+runs:
   using: "composite"
   steps:
     - name: "Extraer versión"
