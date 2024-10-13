@@ -33,7 +33,7 @@ jobs:
 
       - name: Subir imagen
         run: |
-          docker push ${{ vars.DOCKER_USERNAME }}/mi-app-node:0.0.2
+          docker push ${{ vars.DOCKER_USERNAME }}/${{steps.tag.outputs.tagged}}
          
     
     
