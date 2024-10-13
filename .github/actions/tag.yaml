@@ -1,1 +1,33 @@
+name: "Taggear Imagen de docker"
 
+outputs:
+  tagged:
+    description: "Nombre completo para la imagen taggeada"
+    value: "${{steps.taggear.outputs.tagged}}"
+    
+runs:
+  using: "composite"
+  steps:
+    - name: "Extraer versión"
+      id: version
+      shell: bash
+      run: |
+        version=$(jq -r '.version' ./package.json)
+        echo "Image version: $version"
+        echo  "version=${version}" >> $GITHUB_OUTPUT
+
+    - name: "Extraer nombre de la app"
+      id: app_name
+      shell: bash
+      run: |
+        app_name=$(jq -r '.name' ./package.json)
+        echo "App name: $app_name"
+        echo "app_name=${app_name}" >> $GITHUB_OUTPUT
+        
+    - name: "Nombre completo Imagen"
+      id: taggear
+      shell: bash
+      run: |
+        tagged_image="${{  steps.app_name.outputs.app_name }}:${{ steps.version.outputs.version}}"
+        echo "Tagged image: $tagged_image"
+        echo "tagged=${tagged_image}" >> $GITHUB_OUTPUT
