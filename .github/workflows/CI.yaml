@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: development
     outputs:
-      tag_image: ${{steps.tag_output.outputs.tag_image}}
+      tag_image: ${{steps.tag.outputs.tagged}}
     
     steps:
       - name: Checkout
@@ -31,9 +31,9 @@ jobs:
         uses: ./.github/actions/tag
 
       - name: Imprimir tag
-        id: tag_output
+      
         run: |
-          echo tag_image=${{steps.tag.outputs.tagged}} >> GITHUB_OUTPUT
+          echo tag_image: ${{steps.tag.outputs.tagged}}T
           
       - name: Construir image
         run: |
