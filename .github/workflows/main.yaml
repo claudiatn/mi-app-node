@@ -6,7 +6,9 @@ jobs:
   ci:
     name: CI
     uses: ./.github/workflows/CI.yaml
+    secrets: inherit
   cd:
     name: CD
     needs: ci
     uses: ./.github/workflows/CD.yaml
+    secrets: inherit
