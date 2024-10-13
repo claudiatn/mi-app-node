@@ -5,7 +5,7 @@ on:
   
     outputs:
       tag:
-        value: "${{ jobs.build.outputs.tag }}"
+        value: "${{ jobs.build.outputs.tag_image }}"
         
   workflow_dispatch:
 
@@ -29,7 +29,7 @@ jobs:
 
       - name: Imprimir tag
         run: |
-          echo tag=${{steps.tag.outputs.tagged}} >> GITHUB_OUTPUT
+          echo tag_image=${{steps.tag.outputs.tagged}} >> GITHUB_OUTPUT
           
       - name: Construir image
         run: |
