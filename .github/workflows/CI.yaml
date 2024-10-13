@@ -24,7 +24,7 @@ jobs:
 
       - name: Imprimir tag
         run: |
-          echo tag=${{steps.tag.output.tagged}}
+          echo tag=${{steps.tag.outputs.tagged}}
           
       - name: Construir image
         run: |
