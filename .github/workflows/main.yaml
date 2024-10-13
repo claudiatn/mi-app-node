@@ -1,0 +1,11 @@
+name: Flujo CI/CD
+on:
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: CI
+    uses: ./.github/workflows/CI.yaml
+  cd:
+    name: CD
+    uses: ./.github/workflows/CD.yaml
