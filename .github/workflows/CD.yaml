@@ -1,7 +1,12 @@
 name: CD
 on:
   workflow_call:
+  
      inputs:
+      environment:
+       type: string
+       required: true
+       
       tag:
        type: string
        required: true
