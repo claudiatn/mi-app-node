@@ -33,6 +33,9 @@ jobs:
     environment: development
  
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Hacer login en DockerHub
         uses: docker/login-action@v3
         with:
