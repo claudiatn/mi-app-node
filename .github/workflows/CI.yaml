@@ -16,6 +16,9 @@ jobs:
       tag_image: ${{steps.tag.outputs.tagged}}
 
      steps:
+       - name: Checkout
+         uses: actions/checkout@v3
+        
        - name: Tag de la imagen de Docker
          id: tag
          uses: ./.github/actions/tag
@@ -30,9 +33,6 @@ jobs:
     environment: development
  
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
       - name: Hacer login en DockerHub
         uses: docker/login-action@v3
         with:
