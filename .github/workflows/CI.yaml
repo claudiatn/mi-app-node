@@ -2,10 +2,10 @@ name: CI
 
 on:
   workflow_call:
+  
     outputs:
       tag:
-        description: "Tag Imagen"
-        value: "${{jobs.build.outputs.tag}}"
+        value: "${{ jobs.build.outputs.tag }}"
         
   workflow_dispatch:
 
