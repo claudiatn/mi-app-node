@@ -5,7 +5,7 @@ outputs:
     description: "Nombre de apliacion"
     value: "${{steps.name.outputs.app_name}}"
 
-name:
+runs:
   using: "composite"
   steps:
   - name: "Nombre de la aplición"
