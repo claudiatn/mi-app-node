@@ -24,11 +24,11 @@ jobs:
 
       - name: Imprimir tag
         run: |
-          echo tag=${{steps.tag.outputs.tagged}}
+          echo tag=${{steps.tag.outputs.tagged}} >> GITHUB_OUTPUT
           
       - name: Construir image
         run: |
-          docker build -t ${{ vars.DOCKER_USERNAME }}/mi-app-node:0.0.2 .
+          docker build -t ${{ vars.DOCKER_USERNAME }}/$tag.
           docker images
 
       - name: Subir imagen
